@@ -2,11 +2,14 @@
 
     function joinFiles(array $files) {
         if(!is_array($files)) {
-            throw new Exception("argument `$files` must be an array.");
+            throw new Exception("argument \$files must be an array.");
         }
         echo "\""."email_hash"."\"".","."\""."category"."\"".","."\""."filename"."\""."\n";
         foreach ($files as $file) {
             $row = 1;
+            if (!file_exists($file)) {
+                throw new Exception("File not found.");
+            }
             $fileName = basename($file);
             if(($fh = fopen($file, 'r')) !== FALSE) {
                while (($data = fgetcsv($fh, null, ",")) !== FALSE) {
@@ -21,14 +24,19 @@
                 echo "\"".$fileName."\""."\n";
                }
             } else {
-                $errorMessage = "file is not found";
-                echo $errorMessage;
+                throw new Exception("File open failed");
             }
+            fclose($fh);
         }
     }
 
-    $filesLength = $argc - 1;
-    $files = array_slice($argv, 1, $filesLength, false);
-    joinFiles($files);
+    try {
+        $filesLength = $argc - 1;
+        $files = array_slice($argv, 1, $filesLength, false);
+        joinFiles($files);
+    }
+    catch (Exception $e) {
+        echo "Error Message: ".$e->getMessage();
+    }
     
 ?>
