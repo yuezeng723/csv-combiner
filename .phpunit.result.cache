@@ -1,1 +1,1 @@
-{"version":1,"defects":{"Warning":6},"times":{"Warning":0.002}}
+{"version":1,"defects":{"Warning":6,"cvsCombinerTest::testJoinThreeFiles":3,"csvCombiner\\cvsCombinerTest::testJoinThreeFiles":4,"cvsCombinerTest::testThreeFilesMultiCollumns":3,"cvsCombinerTest::testWrongArgumentExceptions":4},"times":{"Warning":0.002,"cvsCombinerTest::testJoinThreeFiles":0.001,"csvCombiner\\cvsCombinerTest::testJoinThreeFiles":0.001,"cvsCombinerTest::testThreeFilesMultiCollumns":0,"cvsCombinerTest::testJoinTwoFiles":0.002,"cvsCombinerTest::testWrongArgumentExceptions":0.002}}
