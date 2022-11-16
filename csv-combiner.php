@@ -1,9 +1,6 @@
 <?php
 
 function joinFiles(array $files) {
-    if(!is_array($files)) {
-        throw new Exception("argument \$files must be an array.");
-    }
     $fileCount = 1;
     foreach ($files as $file) {
         $row = 1;

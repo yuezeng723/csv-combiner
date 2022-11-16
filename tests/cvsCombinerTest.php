@@ -24,7 +24,7 @@ class cvsCombinerTest extends \PHPUnit\Framework\TestCase {
      * @test 
      */
     public function testThreeFilesMultiCollumns(): void {
-        $files = array("./tests/unitTestFiles/testFile1.csv", "./tests/unitTestFiles/testFile2.csv", "./tests/unitTestFiles/testFile3.csv");
+        $files = array("./tests/unitTestFiles/testFile1.csv","./tests/unitTestFiles/testFile2.csv", "./tests/unitTestFiles/testFile3.csv");
         joinFiles($files);
         $this->expectOutputString(
             "\"column1\",\"column2\",\"column3\",\"column4\",\"filename\""."\n".
@@ -35,6 +35,15 @@ class cvsCombinerTest extends \PHPUnit\Framework\TestCase {
             "\"2007\",\"win\",\"lose\",\"win\",\"testFile3.csv\""."\n".
             "\"2010\",\"win\",\"win\",\"lose\",\"testFile3.csv\""."\n"
         );
+    }
+    
+    /**
+     * @test
+     */
+    public function testFileNotFoundException(): void {
+        $this->expectExceptionMessage("File not found.");
+        $files = array("./testUnitTestFiles/fakefile.csv");
+        joinFiles($files);
     }
 
 
