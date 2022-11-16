@@ -7,7 +7,7 @@ class cvsCombinerTest extends \PHPUnit\Framework\TestCase {
      * @test 
      */
     public function testJoinTwoFiles(): void{
-        $files = ["./tests/unitTestFiles/clothing.csv", "./tests/unitTestFiles/accessories.csv"];
+        $files = array("./tests/unitTestFiles/clothing.csv","./tests/unitTestFiles/accessories.csv");
         joinFiles($files);
         $this->expectOutputString(
            "\"email_hash\",\"category\",\"filename\""."\n".
@@ -24,7 +24,7 @@ class cvsCombinerTest extends \PHPUnit\Framework\TestCase {
      * @test 
      */
     public function testThreeFilesMultiCollumns(): void {
-        $files = ["./tests/unitTestFiles/testFile1.csv", "./tests/unitTestFiles/testFile2.csv", "./tests/unitTestFiles/testFile3.csv"];
+        $files = array("./tests/unitTestFiles/testFile1.csv", "./tests/unitTestFiles/testFile2.csv", "./tests/unitTestFiles/testFile3.csv");
         joinFiles($files);
         $this->expectOutputString(
             "\"column1\",\"column2\",\"column3\",\"column4\",\"filename\""."\n".
